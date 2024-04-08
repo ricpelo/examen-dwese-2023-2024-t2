@@ -6,6 +6,7 @@ use App\Http\Requests\CategoriaRequest;
 use App\Models\Desarrolladora;
 use App\Models\Videojuego;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class VideojuegoController extends Controller
@@ -24,7 +25,7 @@ class VideojuegoController extends Controller
     public function index()
     {
         return view('videojuegos.index', [
-            'videojuegos' => Videojuego::all(),
+            'videojuegos' => Auth::user()->videojuegos,
         ]);
     }
 
