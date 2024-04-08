@@ -42,4 +42,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function videojuegos()
+    {
+        return $this->belongsToMany(Videojuego::class, 'posesiones');
+    }
 }

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Distribuidora extends Model
 {
     use HasFactory;
+
+    public function desarrolladoras()
+    {
+        return $this->hasMany(Desarrolladora::class);
+    }
 }
