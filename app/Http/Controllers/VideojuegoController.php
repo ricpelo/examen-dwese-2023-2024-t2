@@ -85,6 +85,10 @@ class VideojuegoController extends Controller
      */
     public function edit(Videojuego $videojuego)
     {
+        if (!Gate::allows('update-videojuego', $videojuego)) {
+            abort(403);
+        }
+
         return view('videojuegos.edit', [
             'videojuego' => $videojuego,
             'desarrolladoras' => Desarrolladora::all(),
@@ -96,6 +100,10 @@ class VideojuegoController extends Controller
      */
     public function update(Request $request, Videojuego $videojuego)
     {
+        if (!Gate::allows('update-videojuego', $videojuego)) {
+            abort(403);
+        }
+
         $validated = $request->validate([
             'titulo' => 'required|max:255',
             'anyo' => 'required|digits:4',
