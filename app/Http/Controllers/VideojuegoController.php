@@ -16,7 +16,7 @@ class VideojuegoController extends Controller
      */
     public function __construct()
     {
-        $this->authorizeResource(Videojuego::class, 'videojuego');
+        // $this->authorizeResource(Videojuego::class, 'videojuego');
     }
 
     /**
@@ -85,13 +85,15 @@ class VideojuegoController extends Controller
      */
     public function edit(Videojuego $videojuego)
     {
-        // if (!Gate::allows('update-videojuego', $videojuego)) {
-        //     abort(403);
-        // }
+        if (!Gate::allows('update-videojuego', $videojuego)) {
+            abort(403);
+        }
 
         return view('videojuegos.edit', [
             'videojuego' => $videojuego,
             'desarrolladoras' => Desarrolladora::all(),
+            'desarrolladora_id' => $videojuego->desarrolladora->id,
+            'distribuidora_id' => $videojuego->desarrolladora->distribuidora->id,
         ]);
     }
 
@@ -100,9 +102,11 @@ class VideojuegoController extends Controller
      */
     public function update(Request $request, Videojuego $videojuego)
     {
-        // if (!Gate::allows('update-videojuego', $videojuego)) {
-        //     abort(403);
-        // }
+        // dd($request);
+
+        if (!Gate::allows('update-videojuego', $videojuego)) {
+            abort(403);
+        }
 
         $validated = $request->validate([
             'titulo' => 'required|max:255',
