@@ -37,7 +37,7 @@ class VideojuegoPolicy
      */
     public function update(User $user, Videojuego $videojuego): bool
     {
-        //
+        return $user->videojuegos()->where('id', $videojuego->id)->exists();
     }
 
     /**
