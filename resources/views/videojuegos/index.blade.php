@@ -59,8 +59,8 @@
                 @endforeach
             </tbody>
         </table>
-        <form action="{{ route('videojuegos.create') }}" class="flex justify-center mt-4 mb-4">
+        <a href="{{ route('videojuegos.create') }}" class="flex justify-center mt-4 mb-4">
             <x-primary-button class="bg-green-500">Insertar un nuevo videojuego</x-primary-button>
-        </form>
+        </a>
     </div>
 </x-app-layout>
