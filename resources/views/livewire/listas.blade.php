@@ -1,6 +1,6 @@
 <div>
     <div>
-        <select name="" id="" wire:model.live="distribuidora_id" wire:change="cambia">
+        <select wire:model.live="distribuidora_id">
             @foreach ($distribuidoras as $distribuidora)
             <option value="{{ $distribuidora->id }}">
                 {{ $distribuidora->nombre }}
@@ -9,7 +9,7 @@
         </select>
     </div>
     <div>
-        <select name="desarrolladora_id" id="" wire:model.live="desarrolladora_id">
+        <select name="desarrolladora_id">
             @foreach ($desarrolladoras as $desarrolladora)
             <option value="{{ $desarrolladora->id }}" {{ $desarrolladora->id == $desarrolladora_id ? 'selected' : '' }} >
                 {{ $desarrolladora->nombre }}
